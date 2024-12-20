@@ -1,0 +1,17 @@
+//stim.h
+
+#include "systemc.h"
+
+SC_MODULE(Stim){
+
+	sc_in<bool> clk;
+	sc_in<int> a;
+	sc_in<int> b;
+
+	void stimulus();
+
+	SC_CTOR(Stim){
+		SC_THREAD(stimulus);
+		sensitive << clk.pos();
+	}
+};
